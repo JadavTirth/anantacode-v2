@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef, useState, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ArrowUpRight } from './Icons';
+import Shuffle from './Shuffle';
 import './CardNav.css';
 
 const NAV_ITEMS = [
@@ -169,9 +170,28 @@ const CardNav = ({
           </div>
 
           {/* Logo */}
-          <a href="/" className="card-nav-logo">
-            <span className="card-nav-logo-symbol">⌬</span>
-            AnantaCode
+          <a href="/" className="card-nav-logo" style={{ display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}>
+            <img
+              src="/logo.png"
+              alt="AnantaCode"
+              style={{ height: '50px', width: 'auto', objectFit: 'contain' }}
+            />
+            <Shuffle
+              text="AnantaCode"
+              tag="span"
+              shuffleDirection="right"
+              duration={0.3}
+              stagger={0.025}
+              animationMode="evenodd"
+              shuffleTimes={1}
+              ease="power3.out"
+              threshold={0}
+              rootMargin="0px"
+              triggerOnce={false}
+              triggerOnHover={true}
+              textAlign="left"
+              style={{ fontWeight: 700, fontSize: '1rem', color: '#111', fontFamily: 'inherit', letterSpacing: '-0.01em', lineHeight: 1.2 }}
+            />
           </a>
 
           {/* CTA */}

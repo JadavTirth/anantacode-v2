@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { GitBranch, Mail, MapPin } from './Icons';
 
 const footerLinks = {
@@ -16,15 +17,61 @@ const footerLinks = {
 };
 
 export default function Footer() {
+  const [nlEmail, setNlEmail] = useState('');
+  const [nlStatus, setNlStatus] = useState('idle'); // idle | sending | sent | error
+
+  const handleNewsletter = async (e) => {
+    e.preventDefault();
+    if (!nlEmail) return;
+    setNlStatus('sending');
+
+    const formData = new FormData();
+    formData.append('access_key', '82e8b41c-8e90-4b3b-b1e8-499fa7b76729');
+    formData.append('email', nlEmail);
+    formData.append('subject', 'Newsletter Signup - AnantaCode');
+    formData.append('message', `New newsletter subscription from: ${nlEmail}`);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await response.json();
+      if (data.success) {
+        setNlStatus('sent');
+        setNlEmail('');
+        setTimeout(() => setNlStatus('idle'), 3000);
+      } else {
+        setNlStatus('error');
+        setTimeout(() => setNlStatus('idle'), 3000);
+      }
+    } catch {
+      setNlStatus('error');
+      setTimeout(() => setNlStatus('idle'), 3000);
+    }
+  };
   return (
-    <footer style={{ background: '#0D0D0D' }}>
-      <div className="container-main py-16">
+    <footer style={{ background: '#0D0D0D', position: 'relative', overflow: 'hidden' }}>
+      {/* ── Background watermark ── */}
+      <div
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 select-none pointer-events-none whitespace-nowrap font-heading font-extrabold"
+        style={{
+          fontSize: 'clamp(6rem, 18vw, 16rem)',
+          lineHeight: 0.85,
+          color: 'rgba(255, 255, 255, 0.03)',
+          letterSpacing: '-0.04em',
+          transform: 'translateX(-50%) translateY(20%)',
+        }}
+      >
+        AnantaCode
+      </div>
+      <div className="container-main py-16 relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
 
           {/* ── Brand ── */}
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-2 font-heading font-extrabold text-white text-lg mb-4">
-              <span style={{ color: '#FF3B3B', fontSize: '1.6rem', lineHeight: 1 }}>⌬</span>
+              <img src="/logo.png" alt="AnantaCode" style={{ height: '44px', width: 'auto', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
               AnantaCode
             </div>
             <p className="text-white/40 text-sm leading-relaxed mb-6 max-w-xs">
@@ -83,9 +130,11 @@ export default function Footer() {
             <p className="text-white/40 text-sm mb-4">
               Tips on web dev & cloud tech, delivered monthly.
             </p>
-            <form className="flex flex-col gap-2" onSubmit={(e) => e.preventDefault()}>
+            <form className="flex flex-col gap-2" onSubmit={handleNewsletter}>
               <input
-                type="email" placeholder="Your email"
+                type="email" placeholder="Your email" required
+                value={nlEmail}
+                onChange={(e) => setNlEmail(e.target.value)}
                 className="w-full px-4 py-2.5 rounded-xl text-sm text-white placeholder-white/25
                            focus:outline-none focus:ring-2 transition-all"
                 style={{
@@ -97,11 +146,15 @@ export default function Footer() {
               />
               <button
                 type="submit"
+                disabled={nlStatus === 'sending'}
                 className="py-2.5 rounded-xl text-sm font-bold text-white transition-all duration-200
-                           hover:opacity-90 hover:-translate-y-0.5"
+                           hover:opacity-90 hover:-translate-y-0.5 disabled:opacity-60"
                 style={{ background: 'linear-gradient(135deg,#FF3B3B,#FF6B6B)' }}
               >
-                Subscribe
+                {nlStatus === 'sending' ? 'Sending...' :
+                 nlStatus === 'sent' ? '✓ Subscribed!' :
+                 nlStatus === 'error' ? '✕ Error' :
+                 'Subscribe'}
               </button>
             </form>
           </div>

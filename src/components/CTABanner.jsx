@@ -67,15 +67,15 @@ export default function CTABanner({ onCtaClick }) {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button
-              onClick={onCtaClick}
+            <a
+              href="#contact"
               className="px-8 py-4 bg-white text-gray-900 font-heading font-bold
                          rounded-xl text-base shadow-xl
                          hover:bg-gray-50 hover:-translate-y-1
                          transition-all duration-300"
             >
-              Start Your Project →
-            </button>
+              Start Your Project
+            </a>
             <a
               href="#projects"
               className="px-8 py-4 border-2 border-white/40 text-white font-heading font-semibold

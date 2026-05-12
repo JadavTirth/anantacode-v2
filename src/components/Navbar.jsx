@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from './Icons';
 
 const links = [
-  { label: 'Services',  href: '#services' },
-  { label: 'Process',   href: '#process' },
-  { label: 'Projects',  href: '#projects' },
-  { label: 'Contact',   href: '#contact' },
+  { label: 'Services', href: '#services' },
+  { label: 'Process', href: '#process' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Contact', href: '#contact' },
 ];
 
 export default function Navbar({ onCtaClick }) {
-  const [open, setOpen]         = useState(false);
+  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -20,18 +20,17 @@ export default function Navbar({ onCtaClick }) {
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm border-b border-black/[0.06]' : 'bg-transparent'
-      }`}
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm border-b border-black/[0.06]' : 'bg-transparent'
+        }`}
     >
-      <div className="container-main flex items-center justify-between h-16 md:h-18">
+      <div className="container-main flex items-center justify-between" style={{ height: '72px', overflow: 'visible' }}>
         {/* Logo */}
         <a
           href="#"
           onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
           className="flex items-center gap-2 font-heading font-bold text-gray-900 text-lg"
         >
-          <span className="text-red-primary text-2xl font-extrabold">⌬</span>
+          <img src="/logo.png" alt="AnantaCode" style={{ height: '60px', width: 'auto', objectFit: 'contain' }} />
           AnantaCode
         </a>
 

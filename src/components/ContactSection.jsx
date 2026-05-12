@@ -3,20 +3,43 @@ import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send } from './Icons';
 
 const info = [
-  { Icon: Mail,    label: 'Email',    value: 'hello@anantacode.com' },
-  { Icon: Phone,   label: 'Phone',    value: '+91 98765 43210' },
-  { Icon: MapPin,  label: 'Location', value: 'India (Remote Worldwide)' },
+  { Icon: Mail, label: 'Email', value: 'info@anantacode.in' },
+  { Icon: Phone, label: 'Phone', value: '+91 78784-41277 | +91 95103-32132' },
+  { Icon: MapPin, label: 'Location', value: 'Gandhinagar, India' },
 ];
 
 export default function ContactSection() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState('idle'); // idle | sending | sent | error
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSent(true);
-    setTimeout(() => setSent(false), 3000);
-    setForm({ name: '', email: '', message: '' });
+    setStatus('sending');
+
+    const formData = new FormData();
+    formData.append('access_key', '82e8b41c-8e90-4b3b-b1e8-499fa7b76729');
+    formData.append('name', form.name);
+    formData.append('email', form.email);
+    formData.append('message', form.message);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await response.json();
+      if (data.success) {
+        setStatus('sent');
+        setForm({ name: '', email: '', message: '' });
+        setTimeout(() => setStatus('idle'), 3000);
+      } else {
+        setStatus('error');
+        setTimeout(() => setStatus('idle'), 3000);
+      }
+    } catch {
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 3000);
+    }
   };
 
   return (
@@ -79,8 +102,15 @@ export default function ContactSection() {
                              transition-all"
                 />
               </div>
-              <button type="submit" className="btn-primary w-full justify-center mt-1">
-                {sent ? '✓ Message Sent!' : <><Send size={16} /> Send Message</>}
+              <button
+                type="submit"
+                disabled={status === 'sending'}
+                className="btn-primary w-full justify-center mt-1 disabled:opacity-60"
+              >
+                {status === 'sending' ? 'Sending...' :
+                  status === 'sent' ? '✓ Message Sent!' :
+                    status === 'error' ? '✕ Error, try again' :
+                      <><Send size={16} /> Send Message</>}
               </button>
             </form>
           </motion.div>
@@ -115,7 +145,7 @@ export default function ContactSection() {
 
             {/* CTA Banner */}
             <div className="relative rounded-2xl overflow-hidden p-8 text-white"
-                 style={{ background: 'linear-gradient(135deg, #FF3B3B 0%, #FF6B6B 40%, #7F1D1D 100%)' }}>
+              style={{ background: 'linear-gradient(135deg, #FF3B3B 0%, #FF6B6B 40%, #7F1D1D 100%)' }}>
               <div className="absolute -top-10 -right-10 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
               <p className="text-white/70 text-sm font-semibold uppercase tracking-wider mb-2">Response time</p>
               <p className="text-2xl font-extrabold font-heading mb-1">Within 24 Hours</p>

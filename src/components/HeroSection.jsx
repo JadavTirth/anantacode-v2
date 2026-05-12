@@ -5,9 +5,9 @@ import { motion } from 'framer-motion';
 const WORDS = ['Web Applications', 'Mobile Apps', 'Cloud Solutions', 'UI/UX Design', 'API Systems'];
 
 function useTypewriter(words, speed = 80, pause = 1800) {
-  const [display, setDisplay]   = useState('');
-  const [wordIdx, setWordIdx]   = useState(0);
-  const [charIdx, setCharIdx]   = useState(0);
+  const [display, setDisplay] = useState('');
+  const [wordIdx, setWordIdx] = useState(0);
+  const [charIdx, setCharIdx] = useState(0);
   const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
@@ -43,20 +43,20 @@ const PARTICLES = Array.from({ length: 18 }, (_, i) => ({
 
 /* ── Tech floating pills ─────────────── */
 const PILLS = [
-  { label: 'React',      x: 8,  y: 20, delay: 0 },
-  { label: 'Next.js',    x: 82, y: 15, delay: 0.5 },
-  { label: 'Node.js',    x: 5,  y: 60, delay: 1 },
-  { label: 'AWS',        x: 85, y: 65, delay: 1.5 },
-  { label: 'Docker',     x: 75, y: 40, delay: 0.8 },
+  { label: 'React', x: 8, y: 20, delay: 0 },
+  { label: 'Next.js', x: 82, y: 15, delay: 0.5 },
+  { label: 'Node.js', x: 5, y: 60, delay: 1 },
+  { label: 'AWS', x: 85, y: 65, delay: 1.5 },
+  { label: 'Docker', x: 75, y: 40, delay: 0.8 },
   { label: 'TypeScript', x: 12, y: 80, delay: 1.2 },
 ];
 
 /* ── Stats row ───────────────────────── */
 const STATS = [
-  { value: '20+',   label: 'Projects Delivered' },
-  { value: '99%',   label: 'Client Satisfaction' },
-  { value: '24/7',  label: 'Support Available' },
-  { value: '3 Wks', label: 'Avg. Delivery' },
+  { value: '20+', label: 'Projects Delivered' },
+  { value: '99%', label: 'Client Satisfaction' },
+  { value: '24/7', label: 'Support Available' },
+  { value: '10+', label: 'Technologies' },
 ];
 
 export default function HeroSection({ onCtaClick }) {
@@ -71,7 +71,7 @@ export default function HeroSection({ onCtaClick }) {
     let animId;
 
     const resize = () => {
-      canvas.width  = canvas.offsetWidth;
+      canvas.width = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
     };
     resize();
@@ -89,7 +89,7 @@ export default function HeroSection({ onCtaClick }) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       DOTS.forEach(d => {
         d.x += d.vx; d.y += d.vy;
-        if (d.x < 0 || d.x > canvas.width)  d.vx *= -1;
+        if (d.x < 0 || d.x > canvas.width) d.vx *= -1;
         if (d.y < 0 || d.y > canvas.height) d.vy *= -1;
         ctx.beginPath();
         ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
@@ -133,13 +133,17 @@ export default function HeroSection({ onCtaClick }) {
 
       {/* ── Gradient blobs ── */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full pointer-events-none"
-           style={{ background: 'radial-gradient(circle, rgba(255,59,59,0.12) 0%, transparent 70%)',
-                    animation: 'blobFloat 8s ease-in-out infinite' }} />
+        style={{
+          background: 'radial-gradient(circle, rgba(255,59,59,0.12) 0%, transparent 70%)',
+          animation: 'blobFloat 8s ease-in-out infinite'
+        }} />
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full pointer-events-none"
-           style={{ background: 'radial-gradient(circle, rgba(255,107,107,0.08) 0%, transparent 70%)',
-                    animation: 'blobFloat 10s ease-in-out infinite reverse' }} />
+        style={{
+          background: 'radial-gradient(circle, rgba(255,107,107,0.08) 0%, transparent 70%)',
+          animation: 'blobFloat 10s ease-in-out infinite reverse'
+        }} />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
-           style={{ background: 'radial-gradient(circle, rgba(255,59,59,0.04) 0%, transparent 70%)' }} />
+        style={{ background: 'radial-gradient(circle, rgba(255,59,59,0.04) 0%, transparent 70%)' }} />
 
       {/* ── Floating particles ── */}
       {PARTICLES.map(p => (
@@ -207,7 +211,7 @@ export default function HeroSection({ onCtaClick }) {
             className="font-heading font-extrabold leading-tight mb-4"
             style={{ fontSize: 'clamp(2.4rem, 6vw, 4.5rem)', color: '#ffffff' }}
           >
-            We Build World-Class
+            We Build
             <br />
             <span
               className="relative inline-block"
@@ -238,8 +242,9 @@ export default function HeroSection({ onCtaClick }) {
             className="text-lg mb-10 max-w-xl mx-auto leading-relaxed"
             style={{ color: 'rgba(255,255,255,0.55)' }}
           >
-            From idea to launch — we engineer high-performance digital products
-            that drive real results for startups and businesses worldwide.
+            We develop secure, scalable, and high-performance
+            web platforms for startups and businesses —
+            combining modern development with cybersecurity expertise.
           </motion.p>
 
           {/* CTAs */}
@@ -284,7 +289,7 @@ export default function HeroSection({ onCtaClick }) {
             {STATS.map((s, i) => (
               <div key={s.label} className="text-center">
                 <div className="font-heading font-extrabold text-2xl mb-0.5"
-                     style={{ color: '#FF3B3B' }}>
+                  style={{ color: '#FF3B3B' }}>
                   {s.value}
                 </div>
                 <div className="text-xs" style={{ color: 'rgba(255,255,255,0.35)' }}>

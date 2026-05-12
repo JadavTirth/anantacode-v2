@@ -11,12 +11,36 @@ const perks = [
 
 export default function PopupForm({ isVisible, onClose }) {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState('idle'); // idle | sending | sent | error
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSent(true);
-    setTimeout(() => { setSent(false); onClose(); setForm({ name: '', email: '', message: '' }); }, 2500);
+    setStatus('sending');
+
+    const formData = new FormData();
+    formData.append('access_key', '82e8b41c-8e90-4b3b-b1e8-499fa7b76729');
+    formData.append('name', form.name);
+    formData.append('email', form.email);
+    formData.append('message', form.message);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await response.json();
+      if (data.success) {
+        setStatus('sent');
+        setForm({ name: '', email: '', message: '' });
+        setTimeout(() => { setStatus('idle'); onClose(); }, 2500);
+      } else {
+        setStatus('error');
+        setTimeout(() => setStatus('idle'), 3000);
+      }
+    } catch {
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 3000);
+    }
   };
 
   return (
@@ -60,7 +84,7 @@ export default function PopupForm({ isVisible, onClose }) {
               {/* Logo */}
               <div className="relative">
                 <div className="flex items-center gap-2 mb-8">
-                  <span style={{ color: '#FF3B3B', fontSize: '1.8rem', lineHeight: 1 }}>⌬</span>
+                  <img src="/logo.png" alt="AnantaCode" style={{ height: '44px', width: 'auto', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
                   <span className="text-white font-heading font-bold text-lg tracking-tight">AnantaCode</span>
                 </div>
                 <h2 className="text-white font-heading font-extrabold text-2xl leading-tight mb-3">
@@ -105,7 +129,7 @@ export default function PopupForm({ isVisible, onClose }) {
               </div>
 
               {/* Form */}
-              {sent ? (
+              {status === 'sent' ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -173,17 +197,19 @@ export default function PopupForm({ isVisible, onClose }) {
                   </div>
                   <button
                     type="submit"
+                    disabled={status === 'sending'}
                     className="w-full py-3.5 rounded-xl font-heading font-bold text-white text-sm
                                flex items-center justify-center gap-2
                                hover:-translate-y-0.5 active:translate-y-0
-                               transition-all duration-200 shadow-lg"
+                               transition-all duration-200 shadow-lg disabled:opacity-60"
                     style={{
                       background: 'linear-gradient(135deg, #FF3B3B 0%, #FF6B6B 60%, #cc2020 100%)',
                       boxShadow: '0 8px 24px rgba(255,59,59,0.35)',
                     }}
                   >
-                    <Send size={15} />
-                    Send Message
+                    {status === 'sending' ? 'Sending...' :
+                     status === 'error' ? '✕ Error, try again' :
+                     <><Send size={15} /> Send Message</>}
                   </button>
                 </form>
               )}

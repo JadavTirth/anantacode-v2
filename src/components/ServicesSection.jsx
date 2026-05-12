@@ -4,6 +4,13 @@ import GlareHover from './GlareHover';
 
 const services = [
   {
+    title: 'Cyber Security', Icon: Shield,
+    desc: 'Threat protection, OWASP compliance, and continuous vulnerability monitoring.',
+    grad: 'from-amber-500/10 via-yellow-500/5 to-transparent',
+    glow: 'rgba(245,158,11,0.15)',
+    iconBg: '#f59e0b',
+  },
+  {
     title: 'Web Development', Icon: Layers,
     desc: 'Modern, scalable, high-performance web apps using React, Next.js & Node.js.',
     grad: 'from-blue-500/10 via-indigo-500/5 to-transparent',
@@ -30,13 +37,6 @@ const services = [
     grad: 'from-emerald-500/10 via-green-500/5 to-transparent',
     glow: 'rgba(16,185,129,0.15)',
     iconBg: '#10b981',
-  },
-  {
-    title: 'Cyber Security', Icon: Shield,
-    desc: 'Threat protection, OWASP compliance, and continuous vulnerability monitoring.',
-    grad: 'from-amber-500/10 via-yellow-500/5 to-transparent',
-    glow: 'rgba(245,158,11,0.15)',
-    iconBg: '#f59e0b',
   },
   {
     title: 'Mobile Applications', Icon: Phone,

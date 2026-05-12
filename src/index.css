@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    @apply bg-white text-gray-900 font-body overflow-x-hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold text-gray-900;
+  }
+
+  a { @apply no-underline; }
+}
+
+@layer components {
+  /* ── Buttons ─────────────────── */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2
+           px-6 py-3 rounded-lg font-heading font-semibold text-white
+           bg-gradient-brand shadow-red-glow
+           transition-all duration-300
+           hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(255,59,59,0.45)]
+           focus:outline-none focus:ring-2 focus:ring-red-primary focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2
+           px-6 py-3 rounded-lg font-heading font-semibold text-gray-900
+           bg-transparent border border-gray-300
+           transition-all duration-300
+           hover:border-gray-500 hover:bg-gray-50
+           focus:outline-none;
+  }
+
+  /* ── Glass Card ──────────────── */
+  .glass-card {
+    @apply bg-white border border-black/[0.07] rounded-2xl p-8
+           shadow-card transition-all duration-300
+           hover:-translate-y-1 hover:shadow-card-hover
+           hover:border-red-primary/30;
+  }
+
+  /* ── Section ─────────────────── */
+  .section { @apply py-24 relative; }
+
+  /* ── Container ───────────────── */
+  .container-main {
+    @apply mx-auto px-4 sm:px-6 lg:px-8;
+    max-width: 1200px;
+  }
+
+  /* ── Section Title ───────────── */
+  .section-title {
+    @apply text-4xl md:text-5xl font-heading font-extrabold text-center
+           text-gray-900 leading-tight mb-12;
+  }
+
+  /* ── Gradient Text ───────────── */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #FF3B3B 0%, #FF6B6B 40%, #7F1D1D 100%);
+  }
+
+  /* ── Eyebrow ──────────────────── */
+  .eyebrow {
+    @apply inline-block text-xs font-bold tracking-widest uppercase
+           text-red-primary bg-red-primary/10 border border-red-primary/20
+           rounded-full px-4 py-1 mb-4;
+  }
+
+  /* ── Nav Link ─────────────────── */
+  .nav-link {
+    @apply text-gray-500 font-medium transition-colors duration-200
+           hover:text-gray-900;
+  }
+
+  /* ── Footer Link ──────────────── */
+  .footer-link {
+    @apply text-gray-500 transition-colors duration-200
+           hover:text-red-primary;
+  }
+
+  /* ── Tag Chip ─────────────────── */
+  .tag-chip {
+    @apply text-xs font-semibold px-3 py-1 rounded-full
+           border transition-colors duration-200;
+  }
+
+  /* ── Marquee (white bg) ──────────────────── */
+  .marquee-fade {
+    position: relative;
+  }
+  .marquee-fade::before,
+  .marquee-fade::after {
+    content: '';
+    @apply absolute top-0 bottom-0 z-10 w-32 pointer-events-none;
+  }
+  .marquee-fade::before {
+    left: 0;
+    background: linear-gradient(to right, #ffffff, transparent);
+  }
+  .marquee-fade::after {
+    right: 0;
+    background: linear-gradient(to left, #ffffff, transparent);
+  }
+
+  /* ── Trust logo strip fade ────── */
+  .trust-fade {
+    position: relative;
+  }
+  .trust-fade::before,
+  .trust-fade::after {
+    content: '';
+    @apply absolute top-0 bottom-0 z-10 w-24 pointer-events-none;
+  }
+  .trust-fade::before {
+    left: 0;
+    background: linear-gradient(to right, #ffffff, transparent);
+  }
+  .trust-fade::after {
+    right: 0;
+    background: linear-gradient(to left, #ffffff, transparent);
+  }
+
+  /* ── Dark marquee fade (for #111 bg) ── */
+  .marquee-fade-dark {
+    position: relative;
+  }
+  .marquee-fade-dark::before,
+  .marquee-fade-dark::after {
+    content: '';
+    @apply absolute top-0 bottom-0 z-10 w-24 pointer-events-none;
+  }
+  .marquee-fade-dark::before {
+    left: 0;
+    background: linear-gradient(to right, #111111, transparent);
+  }
+  .marquee-fade-dark::after {
+    right: 0;
+    background: linear-gradient(to left, #111111, transparent);
+  }
+}
+
+@layer utilities {
+  .bg-gradient-brand {
+    background-image: linear-gradient(135deg, #FF3B3B 0%, #FF6B6B 40%, #7F1D1D 100%);
+  }
+  .bg-grid-pattern {
+    background-image:
+      linear-gradient(to right, rgba(0,0,0,0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0,0,0,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}

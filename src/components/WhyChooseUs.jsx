@@ -21,31 +21,43 @@ function AnimatedNumber({ value, suffix, active }) {
 
 const cards = [
   {
-    Icon: Zap,        title: 'Fast Performance',
-    desc: 'Lightning-fast experiences optimized for speed and conversion.',
-    metric: 98, suffix: '/100', metricLabel: 'Avg PageSpeed Score',
-    bar: 98, color: '#FF3B3B',
-    tags: ['Core Web Vitals', 'SEO Ready', 'Optimized UX'],
+    Icon: ShieldCheck,
+    title: 'Secure Architecture',
+    desc: 'Security-focused web applications built with modern protection standards and scalable backend systems.',
+    metric: 'Security',
+    metricLabel: 'Built Into Every Project',
+    bar: 95,
+    color: '#FF4D4D',
+    tags: ['OWASP Ready', 'Secure APIs', 'Protected Systems'],
   },
   {
-    Icon: Layers,     title: 'Scalable Foundations',
-    desc: 'Infrastructure designed to grow with your business.',
-    metric: 100, suffix: 'k+', metricLabel: 'Concurrent Users Handled',
-    bar: 92, color: '#FF6B35',
-    tags: ['Cloud Ready', 'API Driven', 'High Availability'],
+    Icon: Zap,
+    title: 'High Performance',
+    desc: 'Fast-loading digital experiences optimized for performance, responsiveness, and user engagement.',
+    metric: 'Fast',
+    metricLabel: 'Optimized User Experience',
+    bar: 92,
+    color: '#FF6B35',
+    tags: ['Core Web Vitals', 'SEO Optimized', 'Smooth UX'],
   },
   {
-    Icon: ShieldCheck, title: 'Security First',
-    desc: 'Built with modern security practices from day one.',
-    metric: 0, suffix: ' Breaches', metricLabel: 'Security Incidents (Ever)',
-    bar: 100, color: '#22C55E',
-    tags: ['OWASP', 'Secure Auth', 'Data Protection'],
+    Icon: Layers,
+    title: 'Scalable Solutions',
+    desc: 'Modern architectures engineered to support business growth and future scalability.',
+    metric: 'Scalable',
+    metricLabel: 'Future-Ready Systems',
+    bar: 90,
+    color: '#8B5CF6',
+    tags: ['Cloud Ready', 'API Driven', 'Flexible Stack'],
   },
   {
-    Icon: Cpu,        title: 'Modern Engineering',
-    desc: 'Using proven technologies for reliable long-term systems.',
-    metric: 25, suffix: '+', metricLabel: 'Technologies Mastered',
-    bar: 88, color: '#8B5CF6',
+    Icon: Cpu,
+    title: 'Modern Development',
+    desc: 'Building reliable web platforms using powerful modern technologies and clean development practices.',
+    metric: 'Modern',
+    metricLabel: 'Industry Standard Technologies',
+    bar: 88,
+    color: '#22C55E',
     tags: ['React', 'Next.js', 'Cloud Native'],
   },
 ];
@@ -63,7 +75,7 @@ function Card({ card, index, inView }) {
     >
       {/* Top accent bar */}
       <div className="absolute top-0 inset-x-0 h-[3px] rounded-t-2xl opacity-70 group-hover:opacity-100 transition-opacity"
-           style={{ background: `linear-gradient(90deg, ${card.color}, transparent)` }} />
+        style={{ background: `linear-gradient(90deg, ${card.color}, transparent)` }} />
 
       {/* Header */}
       <div className="flex items-start justify-between gap-3">
@@ -75,9 +87,13 @@ function Card({ card, index, inView }) {
           <card.Icon size={20} style={{ color: card.color }} />
         </div>
         <div className="text-right min-w-0">
-           <p className="text-xl md:text-2xl font-extrabold font-heading leading-none" style={{ color: card.color }}>
-            <AnimatedNumber value={card.metric} suffix={card.suffix} active={inView} />
-           </p>
+          <p className="text-xl md:text-2xl font-extrabold font-heading leading-none" style={{ color: card.color }}>
+            {typeof card.metric === 'number' ? (
+              <AnimatedNumber value={card.metric} suffix={card.suffix} active={inView} />
+            ) : (
+              <>{card.metric}{card.suffix}</>
+            )}
+          </p>
           <p className="text-[11px] text-gray-400 font-medium mt-0.5 truncate max-w-[130px]">
             {card.metricLabel}
           </p>
@@ -108,7 +124,7 @@ function Card({ card, index, inView }) {
       <div className="flex flex-wrap gap-1.5 mt-auto">
         {card.tags.map((t) => (
           <span key={t} className="text-[11px] font-semibold px-2.5 py-1 rounded-full"
-                style={{ background: `${card.color}12`, color: card.color, border: `1px solid ${card.color}22` }}>
+            style={{ background: `${card.color}12`, color: card.color, border: `1px solid ${card.color}22` }}>
             {t}
           </span>
         ))}
@@ -135,7 +151,7 @@ export default function WhyChooseUs() {
   }, []);
 
   return (
-    <section id="whyChooseUs" ref={ref} className="section bg-white">
+    <section ref={ref} className="section bg-white">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -178,9 +194,8 @@ export default function WhyChooseUs() {
                 const el = trackRef.current;
                 if (el) el.scrollTo({ left: i * el.offsetWidth * 0.88, behavior: 'smooth' });
               }}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                i === dot ? 'bg-red-primary scale-125' : 'bg-gray-300'
-              }`}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${i === dot ? 'bg-red-primary scale-125' : 'bg-gray-300'
+                }`}
             />
           ))}
         </div>

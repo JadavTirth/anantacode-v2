@@ -30,7 +30,7 @@ export default function Navbar({ onCtaClick }) {
           onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
           className="flex items-center gap-2 font-heading font-bold text-gray-900 text-lg"
         >
-          <img src="/logo.png" alt="AnantaCode" style={{ height: '60px', width: 'auto', objectFit: 'contain' }} />
+          <img src="/logo.png" alt="AnantaCode web development logo" loading="lazy" style={{ height: '60px', width: 'auto', objectFit: 'contain' }} />
           AnantaCode
         </a>
 

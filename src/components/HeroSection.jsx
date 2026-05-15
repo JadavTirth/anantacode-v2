@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 
 /* ── Typewriter hook ─────────────────── */
-const WORDS = ['Web Applications', 'Mobile Apps', 'Cloud Solutions', 'UI/UX Design', 'API Systems'];
+const WORDS = ['MVP Development', 'SaaS Engineering', 'AI Automation', 'Conversion-Focused Design', 'Startup Scaling', 'Secure Infrastructure'];
 
 function useTypewriter(words, speed = 80, pause = 1800) {
   const [display, setDisplay] = useState('');
@@ -51,13 +51,7 @@ const PILLS = [
   { label: 'TypeScript', x: 12, y: 80, delay: 1.2 },
 ];
 
-/* ── Stats row ───────────────────────── */
-const STATS = [
-  { value: '20+', label: 'Projects Delivered' },
-  { value: '99%', label: 'Client Satisfaction' },
-  { value: '24/7', label: 'Support Available' },
-  { value: '10+', label: 'Technologies' },
-];
+
 
 export default function HeroSection({ onCtaClick }) {
   const typed = useTypewriter(WORDS);
@@ -121,7 +115,7 @@ export default function HeroSection({ onCtaClick }) {
 
   return (
     <section
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-28 pb-16"
+      className="relative h-screen flex flex-col justify-center overflow-hidden pt-20"
       style={{ background: 'linear-gradient(135deg, #0A0A0A 0%, #110505 50%, #0f0a00 100%)' }}
     >
       {/* ── Canvas mesh background ── */}
@@ -239,7 +233,7 @@ export default function HeroSection({ onCtaClick }) {
           <motion.p
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.25 }}
-            className="text-lg mb-10 max-w-xl mx-auto leading-relaxed"
+            className="text-lg mb-8 max-w-xl mx-auto leading-relaxed"
             style={{ color: 'rgba(255,255,255,0.55)' }}
           >
             We develop secure, scalable, and high-performance
@@ -251,7 +245,7 @@ export default function HeroSection({ onCtaClick }) {
           <motion.div
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
+            className="flex flex-col sm:flex-row gap-4 justify-center mb-10"
           >
             <button
               onClick={onCtaClick}
@@ -279,22 +273,37 @@ export default function HeroSection({ onCtaClick }) {
             </a>
           </motion.div>
 
-          {/* Stats row */}
+          {/* Trust features */}
           <motion.div
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8"
-            style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-6"
+            style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}
           >
-            {STATS.map((s, i) => (
-              <div key={s.label} className="text-center">
-                <div className="font-heading font-extrabold text-2xl mb-0.5"
-                  style={{ color: '#FF3B3B' }}>
-                  {s.value}
-                </div>
-                <div className="text-xs" style={{ color: 'rgba(255,255,255,0.35)' }}>
-                  {s.label}
-                </div>
+            {[
+              { title: 'Military-Grade Security', desc: 'Enterprise-level protection built into every layer' },
+              { title: 'Scalable Architecture', desc: 'Cloud-native infrastructure designed for high traffic' },
+              { title: 'Lightning Fast UX', desc: 'Optimized performance for maximum conversion rates' }
+            ].map((feature, i) => (
+              <div 
+                key={i} 
+                className="group relative p-6 rounded-2xl transition-transform duration-300 hover:-translate-y-2 text-left"
+                style={{
+                  background: 'rgba(255,255,255,0.03)',
+                  border: '1px solid rgba(255,255,255,0.05)',
+                  backdropFilter: 'blur(10px)',
+                }}
+              >
+                {/* Red hover glow */}
+                <div 
+                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                  style={{
+                    boxShadow: '0 0 20px rgba(255,59,59,0.15)',
+                    border: '1px solid rgba(255,59,59,0.3)',
+                  }}
+                />
+                <h3 className="text-white font-bold mb-2 text-[15px]">{feature.title}</h3>
+                <p className="text-[13px] leading-relaxed" style={{ color: 'rgba(255,255,255,0.5)' }}>{feature.desc}</p>
               </div>
             ))}
           </motion.div>

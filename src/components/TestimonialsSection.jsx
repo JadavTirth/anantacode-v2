@@ -3,50 +3,28 @@ import { Star } from './Icons';
 
 const testimonials = [
   {
-    name: 'Rahul Sharma',
-    role: 'Founder, TechStartup India',
-    avatar: 'RS',
-    avatarBg: '#FF3B3B',
+    name: 'Sarah Jenkins',
+    role: 'VP Product, ScaleMetrics',
+    avatar: 'SJ',
+    avatarBg: '#f43f5e',
     rating: 5,
-    featured: true,
-    quote:
-      'AnantaCode completely transformed our platform. The attention to detail, speed of delivery, and quality of code is unmatched. Our PageSpeed went from 54 to 97 after their optimization sprint.',
-    company: 'TechStartup India',
-    metric: '97',
-    metricLabel: 'PageSpeed Score',
+    quote: 'AnantaCode shipped our platform three weeks ahead of schedule. Their architecture decisions gave us an immediate competitive edge.',
   },
   {
-    name: 'Priya Mehta',
-    role: 'CTO, FinFlow',
-    avatar: 'PM',
+    name: 'David Chen',
+    role: 'Founder, AuraFlow',
+    avatar: 'DC',
     avatarBg: '#6366f1',
     rating: 5,
-    featured: false,
-    quote:
-      'Delivered our entire backend API in 3 weeks. Rock-solid architecture that scaled to 50k users without breaking a sweat.',
-    company: 'FinFlow',
+    quote: 'Working with them feels like having an elite internal engineering team. Our checkout latency dropped 60% immediately post-launch.',
   },
   {
-    name: 'Arjun Kapoor',
-    role: 'CEO, ShopMate',
-    avatar: 'AK',
-    avatarBg: '#0ea5e9',
-    rating: 5,
-    featured: false,
-    quote:
-      'The UI/UX work they did for us was stunning. Our conversion rate increased by 40% within the first month.',
-    company: 'ShopMate',
-  },
-  {
-    name: 'Sneha Verma',
-    role: 'Product Lead, CloudBase',
-    avatar: 'SV',
+    name: 'Maria Rodriguez',
+    role: 'CTO, NovaPay',
+    avatar: 'MR',
     avatarBg: '#10b981',
     rating: 5,
-    featured: false,
-    quote:
-      'Best development partner we have ever worked with. Clear communication, on-time delivery, excellent support.',
-    company: 'CloudBase',
+    quote: 'Their obsession with quality makes them the highest ROI agency we\'ve ever worked with. They don\'t just build features — they build moats.',
   },
 ];
 
@@ -77,107 +55,69 @@ export default function TestimonialsSection() {
   const secondary = testimonials.filter((t) => !t.featured);
 
   return (
-    /* Dark hero-matching background #0A0A0A, compact py-14 instead of full section */
-    <section id="testimonials" style={{ background: '#0A0A0A' }} className="py-14 relative">
-      {/* Subtle red glow */}
+    <section id="testimonials" style={{ background: '#09090b' }} className="min-h-screen flex flex-col justify-center py-10 relative overflow-hidden">
+      {/* Background Glows (Left Blue, Right Red like image) */}
       <div className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse 70% 60% at 50% 0%, rgba(255,59,59,0.07) 0%, transparent 70%)' }} />
+        style={{ 
+          background: `
+            radial-gradient(circle at 10% 80%, rgba(79, 70, 229, 0.15) 0%, transparent 40%),
+            radial-gradient(circle at 90% 20%, rgba(225, 29, 72, 0.15) 0%, transparent 40%)
+          `
+        }} />
 
-      <div className="container-main relative">
-        {/* Header */}
+      <div className="container-main relative z-10 max-w-[1200px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.5 }}
-          className="text-center mb-10"
+          viewport={{ once: true }} transition={{ duration: 0.6 }}
+          className="text-center mb-12"
         >
-          <p className="eyebrow">Client Stories</p>
-          <h2 className="text-3xl md:text-4xl font-heading font-extrabold text-white mb-3 leading-tight">
-            Loved by Teams Worldwide
+          <p className="text-[#FF3B3B] font-bold text-xs tracking-[0.2em] uppercase mb-4">CLIENT STORIES</p>
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-white leading-tight max-w-2xl mx-auto">
+            Trusted by founders<br/>who demand results.
           </h2>
-          <p className="text-white text-base max-w-lg mx-auto">
-            Don't take our word for it — hear from the founders and teams we've worked with.
-          </p>
         </motion.div>
 
-        {/* Editorial layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-5">
-
-          {/* ── Featured card ── */}
-          {featured && (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {testimonials.map((t, i) => (
             <motion.div
-              initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }} transition={{ duration: 0.55 }}
-              className="lg:col-span-3 relative rounded-2xl p-7 md:p-8
-                         flex flex-col justify-between overflow-hidden"
-              style={{ background: '#fef2f2ff', border: '1px solid rgba(255,255,255,0.07)' }}
+              key={t.name}
+              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.1 }}
+              className="group relative rounded-2xl transition-transform duration-300 hover:-translate-y-1 overflow-hidden p-[1px]"
             >
-              {/* Top accent */}
-              <div className="absolute top-0 inset-x-0 h-[2px] rounded-t-2xl"
-                style={{ background: 'linear-gradient(90deg,#FF3B3B,#FF6B6B,transparent)' }} />
+              {/* Static Border Layer */}
+              <div className="absolute inset-0 bg-white/[0.08]" />
 
-              {/* Big quote mark */}
-              <div className="absolute top-4 right-6 text-[100px] leading-none font-serif
-                              select-none pointer-events-none"
-                style={{ color: 'rgba(255,59,59,0.06)' }}>
-                "
-              </div>
+              {/* Animated Glowing Beam Layer */}
+              <div className="absolute inset-[-100%] animate-[spin_3s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                style={{
+                  background: 'conic-gradient(from 90deg at 50% 50%, transparent 0%, transparent 70%, #FF3B3B 100%)',
+                }}
+              />
 
-              <div className="relative">
-                <Stars />
-                <blockquote className="mt-5 text-black text-lg md:text-xl font-heading font-semibold
-                                       leading-snug max-w-lg">
-                  "{featured.quote}"
-                </blockquote>
-              </div>
-
-              <div className="relative mt-7 flex items-end justify-between gap-4 flex-wrap">
-                <div className="flex items-center gap-3">
-                  <Avatar initials={featured.avatar} bg={featured.avatarBg} />
-                  <div>
-                    <p className="font-bold text-black text-sm">{featured.name}</p>
-                    <p className="text-black text-xs">{featured.role}</p>
-                  </div>
-                </div>
-                {featured.metric && (
-                  <div className="flex flex-col items-end">
-                    <span className="text-2xl font-extrabold font-heading"
-                      style={{ color: '#FF3B3B' }}>
-                      {featured.metric}
-                    </span>
-                    <span className="text-xs text-gray-500 font-medium">{featured.metricLabel}</span>
-                  </div>
-                )}
-              </div>
-            </motion.div>
-          )}
-
-          {/* ── Secondary cards ── */}
-          <div className="lg:col-span-2 flex flex-col gap-4">
-            {secondary.map((t, i) => (
-              <motion.div
-                key={t.name}
-                initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="rounded-xl p-5 flex flex-col gap-3
-                           hover:-translate-y-0.5 transition-all duration-300"
-                style={{ background: '#fef2f2ff', border: '1px solid rgba(255,255,255,0.07)' }}
+              {/* Inner Card Layer */}
+              <div className="relative h-full flex flex-col justify-between p-8 rounded-[15px] z-10"
+                style={{ background: '#111113' }}
               >
-                <div className="flex items-center justify-between">
-                  <Stars />
-                  <span className="text-[11px] text-black font-medium">{t.company}</span>
+                <div className="relative">
+                  <div className="mb-6">
+                    <Stars />
+                  </div>
+                  <blockquote className="text-[15px] italic mb-10 leading-relaxed text-gray-300 font-medium">
+                    "{t.quote}"
+                  </blockquote>
                 </div>
-                <p className="text-black text-sm leading-relaxed">"{t.quote}"</p>
-                <div className="flex items-center gap-2 pt-2"
-                  style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+
+                <div className="relative flex items-center gap-4 mt-auto">
                   <Avatar initials={t.avatar} bg={t.avatarBg} />
                   <div>
-                    <p className="font-bold text-black text-xs">{t.name}</p>
-                    <p className="text-black text-[11px]">{t.role}</p>
+                    <p className="font-bold text-white text-sm">{t.name}</p>
+                    <p className="text-xs text-gray-500">{t.role}</p>
                   </div>
                 </div>
-              </motion.div>
-            ))}
-          </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

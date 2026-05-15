@@ -10,9 +10,11 @@ const NAV_ITEMS = [
     bgColor: '#1B1722',
     textColor: '#fff',
     links: [
-      { label: 'Web Dev',      href: '#services', ariaLabel: 'Web Development' },
-      { label: 'Cloud & DevOps', href: '#services', ariaLabel: 'Cloud and DevOps' },
-      { label: 'UI/UX',       href: '#services', ariaLabel: 'UI UX Design' },
+      { label: 'Cyber Security', href: '#services', ariaLabel: 'Cyber Security' },
+      { label: 'Web Development', href: '#services', ariaLabel: 'Web Development' },
+      { label: 'AI Automation', href: '#services', ariaLabel: 'AI Automation' },
+      { label: 'UI/UX Design', href: '#services', ariaLabel: 'UI/UX Design' },
+      { label: 'Cloud & DevOps', href: '#services', ariaLabel: 'Cloud & DevOps' },
     ],
   },
   {
@@ -20,8 +22,9 @@ const NAV_ITEMS = [
     bgColor: '#2F293A',
     textColor: '#fff',
     links: [
-      { label: 'Our Process', href: '#process',  ariaLabel: 'Our Development Process' },
-      { label: 'Projects',    href: '#projects', ariaLabel: 'Featured Projects' },
+      { label: 'Our Process', href: '#process', ariaLabel: 'Our Development Process' },
+      { label: 'Projects', href: '#projects', ariaLabel: 'Featured Projects' },
+      { label: 'Why AnantaCode', href: '#whyChooseUs', ariaLabel: 'Why AnantaCode' },
     ],
   },
   {
@@ -29,26 +32,26 @@ const NAV_ITEMS = [
     bgColor: '#FF3B3B',
     textColor: '#fff',
     links: [
-      { label: 'Email Us',  href: '#contact',  ariaLabel: 'Email us' },
-      { label: 'LinkedIn',  href: '#',          ariaLabel: 'LinkedIn' },
+      { label: 'Email Us', href: '#contact', ariaLabel: 'Email us' },
+      { label: 'Contact Us', href: '#contact', ariaLabel: 'Contact Us' },
     ],
   },
 ];
 
 const CardNav = ({
-  items      = NAV_ITEMS,
-  ease       = 'power3.out',
-  baseColor  = '#ffffff',
-  menuColor  = '#111111',
-  buttonBgColor   = '#FF3B3B',
+  items = NAV_ITEMS,
+  ease = 'power3.out',
+  baseColor = '#ffffff',
+  menuColor = '#111111',
+  buttonBgColor = '#FF3B3B',
   buttonTextColor = '#ffffff',
   onCtaClick,
 }) => {
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
-  const [isExpanded,    setIsExpanded]    = useState(false);
-  const navRef   = useRef(null);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const navRef = useRef(null);
   const cardsRef = useRef([]);
-  const tlRef    = useRef(null);
+  const tlRef = useRef(null);
 
   const calcHeight = () => {
     const navEl = navRef.current;
@@ -59,19 +62,19 @@ const CardNav = ({
       if (contentEl) {
         const prev = {
           vis: contentEl.style.visibility,
-          pe:  contentEl.style.pointerEvents,
+          pe: contentEl.style.pointerEvents,
           pos: contentEl.style.position,
-          h:   contentEl.style.height,
+          h: contentEl.style.height,
         };
         Object.assign(contentEl.style, {
           visibility: 'visible', pointerEvents: 'auto',
-          position: 'static',   height: 'auto',
+          position: 'static', height: 'auto',
         });
         contentEl.offsetHeight; // reflow
         const total = 60 + contentEl.scrollHeight + 16;
         Object.assign(contentEl.style, {
           visibility: prev.vis, pointerEvents: prev.pe,
-          position: prev.pos,   height: prev.h,
+          position: prev.pos, height: prev.h,
         });
         return total;
       }
@@ -82,7 +85,7 @@ const CardNav = ({
   const buildTl = () => {
     const navEl = navRef.current;
     if (!navEl) return null;
-    gsap.set(navEl,          { height: 60, overflow: 'hidden' });
+    gsap.set(navEl, { height: 60, overflow: 'hidden' });
     gsap.set(cardsRef.current, { y: 50, opacity: 0 });
     const tl = gsap.timeline({ paused: true });
     tl.to(navEl, { height: calcHeight, duration: 0.4, ease });
@@ -173,7 +176,8 @@ const CardNav = ({
           <a href="/" className="card-nav-logo" style={{ display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}>
             <img
               src="/logo.png"
-              alt="AnantaCode"
+              alt="AnantaCode web solutions"
+              loading="lazy"
               style={{ height: '50px', width: 'auto', objectFit: 'contain' }}
             />
             <Shuffle

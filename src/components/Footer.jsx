@@ -71,7 +71,7 @@ export default function Footer() {
           {/* ── Brand ── */}
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-2 font-heading font-extrabold text-white text-lg mb-4">
-              <img src="/logo.png" alt="AnantaCode" style={{ height: '44px', width: 'auto', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
+              <img src="/logo.png" alt="AnantaCode SaaS engineering logo" loading="lazy" style={{ height: '44px', width: 'auto', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
               AnantaCode
             </div>
             <p className="text-white/40 text-sm leading-relaxed mb-6 max-w-xs">

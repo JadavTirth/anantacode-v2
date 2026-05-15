@@ -45,6 +45,7 @@ export default function ProjectsSection() {
               <div className={`relative overflow-hidden min-h-[220px] md:min-h-[320px] ${i % 2 !== 0 ? 'md:order-2' : ''}`}>
                 <img
                   src={proj.img} alt={proj.title}
+                  loading="lazy"
                   className="w-full h-full object-cover"
                   onError={(e) => {
                     e.target.parentElement.style.background = `linear-gradient(135deg, ${proj.color}22, ${proj.color}44)`;

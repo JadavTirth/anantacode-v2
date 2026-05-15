@@ -84,7 +84,7 @@ export default function PopupForm({ isVisible, onClose }) {
               {/* Logo */}
               <div className="relative">
                 <div className="flex items-center gap-2 mb-8">
-                  <img src="/logo.png" alt="AnantaCode" style={{ height: '44px', width: 'auto', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
+                  <img src="/logo.png" alt="AnantaCode logo" loading="lazy" style={{ height: '44px', width: 'auto', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
                   <span className="text-white font-heading font-bold text-lg tracking-tight">AnantaCode</span>
                 </div>
                 <h2 className="text-white font-heading font-extrabold text-2xl leading-tight mb-3">

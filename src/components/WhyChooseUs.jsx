@@ -21,32 +21,32 @@ function AnimatedNumber({ value, suffix, active }) {
 
 const cards = [
   {
-    Icon: Zap,        title: 'Performance First',
-    desc: 'Optimised bundles, lazy loading, and CDN-ready infrastructure for blazing fast apps.',
+    Icon: Zap,        title: 'Fast Performance',
+    desc: 'Lightning-fast experiences optimized for speed and conversion.',
     metric: 98, suffix: '/100', metricLabel: 'Avg PageSpeed Score',
     bar: 98, color: '#FF3B3B',
-    tags: ['Core Web Vitals', 'Lighthouse', 'CDN'],
+    tags: ['Core Web Vitals', 'SEO Ready', 'Optimized UX'],
   },
   {
-    Icon: Layers,     title: 'Scalable Architecture',
-    desc: 'Microservices, cloud-native design, and auto-scaling that grows with your user base.',
+    Icon: Layers,     title: 'Scalable Foundations',
+    desc: 'Infrastructure designed to grow with your business.',
     metric: 100, suffix: 'k+', metricLabel: 'Concurrent Users Handled',
     bar: 92, color: '#FF6B35',
-    tags: ['Microservices', 'Auto-scaling', 'K8s'],
+    tags: ['Cloud Ready', 'API Driven', 'High Availability'],
   },
   {
-    Icon: ShieldCheck, title: 'Secure Systems',
-    desc: 'End-to-end encryption, OWASP compliance, and continuous vulnerability monitoring.',
+    Icon: ShieldCheck, title: 'Security First',
+    desc: 'Built with modern security practices from day one.',
     metric: 0, suffix: ' Breaches', metricLabel: 'Security Incidents (Ever)',
     bar: 100, color: '#22C55E',
-    tags: ['OWASP', 'SSL/TLS', 'Pen Testing'],
+    tags: ['OWASP', 'Secure Auth', 'Data Protection'],
   },
   {
-    Icon: Cpu,        title: 'Modern Tech Stack',
-    desc: 'The latest frameworks and cloud platforms so your product stays future-proof.',
+    Icon: Cpu,        title: 'Modern Engineering',
+    desc: 'Using proven technologies for reliable long-term systems.',
     metric: 25, suffix: '+', metricLabel: 'Technologies Mastered',
     bar: 88, color: '#8B5CF6',
-    tags: ['React', 'Next.js', 'AWS', 'Docker'],
+    tags: ['React', 'Next.js', 'Cloud Native'],
   },
 ];
 
@@ -135,7 +135,7 @@ export default function WhyChooseUs() {
   }, []);
 
   return (
-    <section ref={ref} className="section bg-white">
+    <section id="whyChooseUs" ref={ref} className="section bg-white">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div

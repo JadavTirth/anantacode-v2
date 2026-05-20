@@ -115,7 +115,7 @@ export default function HeroSection({ onCtaClick }) {
 
   return (
     <section
-      className="relative h-screen flex flex-col justify-center overflow-hidden pt-20"
+      className="relative min-h-screen md:h-screen flex flex-col justify-center overflow-hidden pt-24 pb-12 md:py-20"
       style={{ background: 'linear-gradient(135deg, #0A0A0A 0%, #110505 50%, #0f0a00 100%)' }}
     >
       {/* ── Canvas mesh background ── */}
@@ -187,7 +187,7 @@ export default function HeroSection({ onCtaClick }) {
           <motion.div
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8 text-xs font-bold uppercase tracking-widest"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 sm:mb-8 text-xs font-bold uppercase tracking-widest"
             style={{
               background: 'rgba(255,59,59,0.1)',
               border: '1px solid rgba(255,59,59,0.3)',
@@ -202,8 +202,8 @@ export default function HeroSection({ onCtaClick }) {
           <motion.h1
             initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="font-heading font-extrabold leading-tight mb-4"
-            style={{ fontSize: 'clamp(2.4rem, 6vw, 4.5rem)', color: '#ffffff' }}
+            className="font-heading font-extrabold leading-tight mb-3 sm:mb-4"
+            style={{ fontSize: 'clamp(1.8rem, 6vw, 4.5rem)', color: '#ffffff' }}
           >
             We Build
             <br />
@@ -233,7 +233,7 @@ export default function HeroSection({ onCtaClick }) {
           <motion.p
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.25 }}
-            className="text-lg mb-8 max-w-xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg mb-6 sm:mb-8 max-w-xl mx-auto leading-relaxed"
             style={{ color: 'rgba(255,255,255,0.55)' }}
           >
             We develop secure, scalable, and high-performance
@@ -245,12 +245,12 @@ export default function HeroSection({ onCtaClick }) {
           <motion.div
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center mb-10"
+            className="flex flex-row gap-2 sm:gap-4 justify-center mb-8 sm:mb-10"
           >
             <button
               onClick={onCtaClick}
-              className="px-8 py-4 rounded-xl font-heading font-bold text-white text-base
-                         transition-all duration-300 hover:-translate-y-1"
+              className="px-4 py-2.5 sm:px-8 sm:py-4 rounded-xl font-heading font-bold text-white text-xs sm:text-base
+                         transition-all duration-300 hover:-translate-y-1 whitespace-nowrap"
               style={{
                 background: 'linear-gradient(135deg,#FF3B3B 0%,#FF6B6B 100%)',
                 boxShadow: '0 8px 32px rgba(255,59,59,0.4)',
@@ -260,8 +260,8 @@ export default function HeroSection({ onCtaClick }) {
             </button>
             <a
               href="#projects"
-              className="px-8 py-4 rounded-xl font-heading font-semibold text-base
-                         transition-all duration-300 hover:-translate-y-1"
+              className="px-4 py-2.5 sm:px-8 sm:py-4 rounded-xl font-heading font-semibold text-xs sm:text-base
+                         transition-all duration-300 hover:-translate-y-1 whitespace-nowrap"
               style={{
                 background: 'rgba(255,255,255,0.05)',
                 border: '1px solid rgba(255,255,255,0.12)',
@@ -287,7 +287,7 @@ export default function HeroSection({ onCtaClick }) {
             ].map((feature, i) => (
               <div 
                 key={i} 
-                className="group relative p-6 rounded-2xl transition-transform duration-300 hover:-translate-y-2 text-left"
+                className="group relative p-4 sm:p-6 rounded-2xl transition-transform duration-300 hover:-translate-y-2 text-left"
                 style={{
                   background: 'rgba(255,255,255,0.03)',
                   border: '1px solid rgba(255,255,255,0.05)',
@@ -302,8 +302,8 @@ export default function HeroSection({ onCtaClick }) {
                     border: '1px solid rgba(255,59,59,0.3)',
                   }}
                 />
-                <h3 className="text-white font-bold mb-2 text-[15px]">{feature.title}</h3>
-                <p className="text-[13px] leading-relaxed" style={{ color: 'rgba(255,255,255,0.5)' }}>{feature.desc}</p>
+                <h3 className="text-white font-bold mb-1 sm:mb-2 text-sm sm:text-[15px]">{feature.title}</h3>
+                <p className="text-[12px] sm:text-[13px] leading-relaxed" style={{ color: 'rgba(255,255,255,0.5)' }}>{feature.desc}</p>
               </div>
             ))}
           </motion.div>

@@ -7,7 +7,7 @@ import './CardNav.css';
 const NAV_ITEMS = [
   {
     label: 'Services',
-    bgColor: '#1B1722',
+    bgColor: 'oklch(37.1% 0 0)',
     textColor: '#fff',
     links: [
       { label: 'Cyber Security', href: '#services', ariaLabel: 'Cyber Security' },
@@ -19,7 +19,7 @@ const NAV_ITEMS = [
   },
   {
     label: 'Company',
-    bgColor: '#2F293A',
+    bgColor: 'oklch(37.4% 0.01 67.558)',
     textColor: '#fff',
     links: [
       { label: 'Our Process', href: '#process', ariaLabel: 'Our Development Process' },
@@ -29,7 +29,7 @@ const NAV_ITEMS = [
   },
   {
     label: 'Connect',
-    bgColor: '#FF3B3B',
+    bgColor: 'oklch(21.8% 0.008 223.9)',
     textColor: '#fff',
     links: [
       { label: 'Email Us', href: '#contact', ariaLabel: 'Email us' },

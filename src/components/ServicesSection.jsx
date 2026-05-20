@@ -129,7 +129,7 @@ export default function ServicesSection() {
                              transition-all duration-300 mt-auto"
                   style={{ color: svc.iconBg }}
                 >
-                  Get Started →
+                  Get Started
                 </a>
               </GlareHover>
             </motion.div>

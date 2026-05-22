@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import CardNav from './components/CardNav';
 import HeroSection from './components/HeroSection';
 import StatsSection from './components/StatsSection';
@@ -12,6 +13,7 @@ import TestimonialsSection from './components/TestimonialsSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import PopupForm from './components/PopupForm';
+import CyberSecurity from './pages/CyberSecurity';
 
 /* ── Scroll progress indicator ── */
 function ScrollProgress() {
@@ -34,7 +36,8 @@ function ScrollProgress() {
   );
 }
 
-export default function App() {
+/* ── Home Page ── */
+function HomePage() {
   const [popupVisible, setPopupVisible] = useState(false);
 
   useEffect(() => {
@@ -57,11 +60,9 @@ export default function App() {
         <StatsSection />
 
         {/* ── Services ── */}
-
         <ServicesSection />
 
         {/* ── Process ── */}
-
         <ProcessSection />
 
         {/* ── Projects ── */}
@@ -84,3 +85,13 @@ export default function App() {
     </>
   );
 }
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/services/cyber-security" element={<CyberSecurity />} />
+    </Routes>
+  );
+}
+

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { Layers, Cloud, Sparkles, Database, Shield, Phone } from './Icons';
 import GlareHover from './GlareHover';
 
@@ -9,6 +10,7 @@ const services = [
     grad: 'from-amber-500/10 via-yellow-500/5 to-transparent',
     glow: 'rgba(245,158,11,0.15)',
     iconBg: '#f59e0b',
+    route: '/services/cyber-security',
   },
   {
     title: 'Web Development', Icon: Layers,
@@ -48,6 +50,7 @@ const services = [
 ];
 
 export default function ServicesSection() {
+  const navigate = useNavigate();
   return (
     <section id="services" className="section bg-white">
       <div className="container-main">
@@ -123,7 +126,13 @@ export default function ServicesSection() {
 
                 {/* Arrow link — slides up on hover */}
                 <a
-                  href="#contact"
+                  href={svc.route || '#contact'}
+                  onClick={(e) => {
+                    if (svc.route) {
+                      e.preventDefault();
+                      navigate(svc.route);
+                    }
+                  }}
                   className="relative text-sm font-semibold flex items-center gap-1
                              opacity-0 group-hover:opacity-100 -translate-y-1 group-hover:translate-y-0
                              transition-all duration-300 mt-auto"

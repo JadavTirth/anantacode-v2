@@ -22,6 +22,7 @@ const NAV_ITEMS = [
       { label: 'Our Process', href: '#process', ariaLabel: 'Our Development Process' },
       { label: 'Projects', href: '#projects', ariaLabel: 'Featured Projects' },
       { label: 'Why AnantaCode', href: '#whyChooseUs', ariaLabel: 'Why AnantaCode' },
+      { label: 'Careers', href: '/careers', ariaLabel: 'Careers at AnantaCode', isRoute: true },
     ],
   },
   {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import CardNav from './components/CardNav';
+import HoverNav from './components/HoverNav';
 import HeroSection from './components/HeroSection';
 import StatsSection from './components/StatsSection';
 import ServicesSection from './components/ServicesSection';
@@ -14,6 +14,7 @@ import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import PopupForm from './components/PopupForm';
 import CyberSecurity from './pages/CyberSecurity';
+import Careers from './pages/Careers';
 
 /* ── Scroll progress indicator ── */
 function ScrollProgress() {
@@ -51,7 +52,7 @@ function HomePage() {
     <>
       <ScrollProgress />
       <PopupForm isVisible={popupVisible} onClose={() => setPopupVisible(false)} />
-      <CardNav onCtaClick={() => setPopupVisible(true)} />
+      <HoverNav onCtaClick={() => setPopupVisible(true)} />
       <main>
         {/* ── Hero ── */}
         <HeroSection onCtaClick={() => setPopupVisible(true)} />
@@ -91,6 +92,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/services/cyber-security" element={<CyberSecurity />} />
+      <Route path="/careers" element={<Careers />} />
     </Routes>
   );
 }

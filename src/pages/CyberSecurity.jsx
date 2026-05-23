@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import CardNav from '../components/CardNav';
+import HoverNav from '../components/HoverNav';
 import Footer from '../components/Footer';
 import './CyberSecurity.css';
 
@@ -11,7 +11,7 @@ export default function CyberSecurity() {
 
   return (
     <>
-      <CardNav />
+      <HoverNav />
 
       <main>
         {/* ═══ HERO ═══ */}

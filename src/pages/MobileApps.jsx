@@ -239,7 +239,7 @@ export default function MobileApps() {
                 },
               ].map((d) => (
                 <div className="ma-diff" key={d.title}>
-                  <div className="ma-diff-icon" style={{ color: '#8b5cf6' }}>{d.icon}</div>
+                  <div className="ma-diff-icon" style={{ color: '#e74c3c' }}>{d.icon}</div>
                   <h3>{d.title}</h3>
                   <p>{d.desc}</p>
                 </div>

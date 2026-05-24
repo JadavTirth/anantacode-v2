@@ -13,6 +13,34 @@ const services = [
     route: '/services/cyber-security',
   },
   {
+    title: 'Web Development', Icon: Layers,
+    desc: 'Modern, scalable, high-performance web apps using React, Next.js & Node.js.',
+    grad: 'from-blue-500/10 via-indigo-500/5 to-transparent',
+    glow: 'rgba(99,102,241,0.15)',
+    iconBg: '#6366f1',
+  },
+  {
+    title: 'Cloud & DevOps', Icon: Cloud,
+    desc: 'Automated pipelines, Docker orchestration, Kubernetes, and scalable hosting.',
+    grad: 'from-sky-500/10 via-cyan-500/5 to-transparent',
+    glow: 'rgba(14,165,233,0.15)',
+    iconBg: '#0ea5e9',
+  },
+  {
+    title: 'UI/UX Design', Icon: Sparkles,
+    desc: 'Premium interfaces designed for performance, engagement, and delight.',
+    grad: 'from-pink-500/10 via-rose-500/5 to-transparent',
+    glow: 'rgba(236,72,153,0.15)',
+    iconBg: '#ec4899',
+  },
+  {
+    title: 'API Development', Icon: Database,
+    desc: 'Secure, scalable REST & GraphQL APIs for modern applications.',
+    grad: 'from-emerald-500/10 via-green-500/5 to-transparent',
+    glow: 'rgba(16,185,129,0.15)',
+    iconBg: '#10b981',
+  },
+  {
     title: 'Mobile Applications', Icon: Phone,
     desc: 'Native and cross-platform mobile apps for iOS and Android.',
     grad: 'from-violet-500/10 via-purple-500/5 to-transparent',
@@ -39,7 +67,7 @@ export default function ServicesSection() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((svc, i) => (
             <motion.div
               key={svc.title}

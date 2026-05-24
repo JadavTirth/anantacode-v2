@@ -1,7 +1,7 @@
 /* ═══════════════════════════════════════
    MobileApps Page Styles
    Uses ma- prefix to avoid conflicts
-   Theme Color: Violet/Purple (#8b5cf6)
+   Theme Color: Red (#e74c3c / #c0392b)
    ═══════════════════════════════════════ */
 
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
@@ -27,7 +27,7 @@
   position: absolute;
   width: 700px;
   height: 700px;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(220, 50, 40, 0.06) 0%, transparent 70%);
   top: -200px;
   right: -100px;
   pointer-events: none;
@@ -57,7 +57,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 2.5px;
-  color: #8b5cf6;
+  color: #e74c3c;
   margin-bottom: 20px;
 }
 .ma-hero h1 {
@@ -92,8 +92,8 @@
   display: inline-block;
   text-decoration: none;
 }
-.ma-btn-r { background: #8b5cf6; color: #fff; }
-.ma-btn-r:hover { background: #7c3aed; }
+.ma-btn-r { background: #e74c3c; color: #fff; }
+.ma-btn-r:hover { background: #c0392b; }
 .ma-btn-w {
   background: transparent;
   color: #fff;
@@ -112,7 +112,7 @@
   color: #888;
   line-height: 2;
 }
-.ma-hl { color: #8b5cf6; }
+.ma-hl { color: #e74c3c; }
 .ma-gr { color: #2ecc71; }
 .ma-yl { color: #f1c40f; }
 .ma-bl { color: #3498db; }
@@ -134,7 +134,7 @@
 .ma-stat-n {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #8b5cf6;
+  color: #e74c3c;
   font-family: 'Space Grotesk', sans-serif;
 }
 .ma-stat-l {
@@ -172,7 +172,7 @@
   margin: 0 32px;
   font-family: 'Space Grotesk', sans-serif;
 }
-.ma-dot { color: #8b5cf6 !important; }
+.ma-dot { color: #e74c3c !important; }
 
 /* ═══ SECTION ═══ */
 .ma-sec {
@@ -188,7 +188,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 2.5px;
-  color: #8b5cf6;
+  color: #e74c3c;
   margin-bottom: 10px;
 }
 .ma-sec-head h2 {
@@ -234,7 +234,7 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background: #8b5cf6;
+  background: #e74c3c;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s;
@@ -277,7 +277,7 @@
   width: 32px;
   height: 32px;
   border-radius: 6px;
-  background: #8b5cf6;
+  background: #e74c3c;
   color: #fff;
   display: flex;
   align-items: center;
@@ -306,7 +306,7 @@
 .ma-av-big {
   font-size: 4.5rem;
   font-weight: 800;
-  color: #8b5cf6;
+  color: #e74c3c;
   line-height: 1;
   margin-bottom: 6px;
   font-family: 'Space Grotesk', sans-serif;
@@ -357,8 +357,8 @@
   font-family: 'Space Grotesk', sans-serif;
 }
 .ma-tech-tag:hover {
-  border-color: #8b5cf6;
-  color: #8b5cf6;
+  border-color: #e74c3c;
+  color: #e74c3c;
 }
 
 /* ═══ WHY US ═══ */
@@ -377,7 +377,7 @@
   transition: all 0.2s;
   font-family: 'Space Grotesk', system-ui, sans-serif;
 }
-.ma-diff:hover { border-color: #8b5cf6; }
+.ma-diff:hover { border-color: #e74c3c; }
 .ma-diff-icon {
   font-size: 1.5rem;
   margin-bottom: 14px;
@@ -397,7 +397,7 @@
 .ma-cta-sec {
   padding: 80px 28px;
   text-align: center;
-  background: #8b5cf6;
+  background: #e74c3c;
   color: #fff;
   font-family: 'Space Grotesk', system-ui, sans-serif;
 }
@@ -421,7 +421,7 @@
   font-weight: 700;
   font-size: 0.95rem;
   background: #fff;
-  color: #8b5cf6;
+  color: #e74c3c;
   border: none;
   cursor: pointer;
   font-family: 'Space Grotesk', system-ui, sans-serif;

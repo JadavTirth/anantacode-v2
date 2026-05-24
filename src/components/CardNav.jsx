@@ -1,4 +1,5 @@
 import { useLayoutEffect, useRef, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ArrowUpRight } from './Icons';
 import Shuffle from './Shuffle';
@@ -10,11 +11,7 @@ const NAV_ITEMS = [
     bgColor: 'oklch(37.1% 0 0)',
     textColor: '#fff',
     links: [
-      { label: 'Cyber Security', href: '#services', ariaLabel: 'Cyber Security' },
-      { label: 'Web Development', href: '#services', ariaLabel: 'Web Development' },
-      { label: 'AI Automation', href: '#services', ariaLabel: 'AI Automation' },
-      { label: 'UI/UX Design', href: '#services', ariaLabel: 'UI/UX Design' },
-      { label: 'Cloud & DevOps', href: '#services', ariaLabel: 'Cloud & DevOps' },
+      { label: 'Cyber Security', href: '/services/cyber-security', ariaLabel: 'Cyber Security', isRoute: true },
     ],
   },
   {
@@ -25,6 +22,7 @@ const NAV_ITEMS = [
       { label: 'Our Process', href: '#process', ariaLabel: 'Our Development Process' },
       { label: 'Projects', href: '#projects', ariaLabel: 'Featured Projects' },
       { label: 'Why AnantaCode', href: '#whyChooseUs', ariaLabel: 'Why AnantaCode' },
+      { label: 'Careers', href: '/careers', ariaLabel: 'Careers at AnantaCode', isRoute: true },
     ],
   },
   {
@@ -47,6 +45,7 @@ const CardNav = ({
   buttonTextColor = '#ffffff',
   onCtaClick,
 }) => {
+  const navigate = useNavigate();
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const navRef = useRef(null);
@@ -231,7 +230,15 @@ const CardNav = ({
                     className="nav-card-link"
                     href={lnk.href || '#'}
                     aria-label={lnk.ariaLabel}
-                    onClick={() => { if (isExpanded) toggle(); }}
+                    onClick={(e) => {
+                      if (lnk.isRoute) {
+                        e.preventDefault();
+                        if (isExpanded) toggle();
+                        navigate(lnk.href);
+                      } else {
+                        if (isExpanded) toggle();
+                      }
+                    }}
                     style={{ color: item.textColor }}
                   >
                     <ArrowUpRight size={15} className="nav-card-link-icon" />

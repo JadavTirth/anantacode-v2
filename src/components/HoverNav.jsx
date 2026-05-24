@@ -11,12 +11,8 @@ const NAV = [
       {
         heading: 'What We Do',
         links: [
-          { label: 'Cyber Security',   href: '/services/cyber-security', route: true },
-          { label: 'Web Development',  href: '#services' },
-          { label: 'AI Automation',    href: '#services' },
-          { label: 'UI/UX Design',     href: '#services' },
-          { label: 'Cloud & DevOps',   href: '#services' },
-          { label: 'Mobile Apps',      href: '#services' },
+          { label: 'Cyber Security',          href: '/services/cyber-security', route: true },
+          { label: 'Mobile Apps Development', href: '/services/mobile-apps', route: true },
         ],
       },
     ],

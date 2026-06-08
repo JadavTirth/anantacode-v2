@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import HoverNav from '../components/HoverNav';
 import Footer from '../components/Footer';
+import { MapPin } from '../components/Icons';
 
 /* ── Data ─────────────────────────────────────── */
 const ROLES = [
@@ -223,7 +224,9 @@ function RoleCard({ role, onApply }) {
               </span>
             </div>
             <h3 className="text-lg font-bold text-gray-900 mb-1">{role.title}</h3>
-            <p className="text-sm text-gray-500">📍 {role.location} · {role.mode}</p>
+            <p className="text-sm text-gray-500 flex items-center gap-1.5 justify-start">
+              <MapPin size={14} className="text-gray-400" /> {role.location} · {role.mode}
+            </p>
           </div>
           <div className="flex items-center gap-3 flex-shrink-0">
             <button

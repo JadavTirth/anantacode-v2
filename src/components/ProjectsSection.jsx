@@ -3,12 +3,12 @@ import { ExternalLink, GitBranch } from './Icons';
 
 const projects = [
   {
-    title: 'KavachAI — Intelligent Web Shield',
-    desc: 'A real-time AI-powered firewall protecting web applications from DDoS, SQL Injection, and bot attacks with zero latency impact. Features automated regional language reporting and court-admissible attack evidence logs.',
+    title: 'Brahmastra — AI-Powered Firewall',
+    desc: 'Real-time intelligent firewall defending web apps from DDoS, SQL Injection, XSS and bot attacks with sub-2ms response. Features live threat feeds, court-admissible attack logs, and automated regional language reporting.',
     tech: ['FastAPI', 'Python (ML)', 'React', 'Redis'],
     img: '/brahmastra-dashboard.jpg',
     color: '#FF3B3B',
-    bgColor: '#fdf0ef',
+    bgColor: '#0f1117',
     link: '#',
   },
   {

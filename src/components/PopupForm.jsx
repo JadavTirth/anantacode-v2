@@ -3,10 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, Send } from './Icons';
 
 const perks = [
-  { emoji: '⚡', text: 'Response within 24 hours' },
-  { emoji: '🔒', text: 'No spam, ever. Promise.' },
-  { emoji: '🎯', text: 'Free project consultation' },
-  { emoji: '🚀', text: 'Launch-ready in weeks' },
+  { icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>, text: 'Response within 24 hours' },
+  { icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>, text: 'No spam, ever. Promise.' },
+  { icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>, text: 'Free project consultation' },
+  { icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>, text: 'Launch-ready in weeks' },
 ];
 
 export default function PopupForm({ isVisible, onClose }) {
@@ -98,9 +98,9 @@ export default function PopupForm({ isVisible, onClose }) {
 
               {/* Perks */}
               <div className="relative flex flex-col gap-3">
-                {perks.map(({ emoji, text }) => (
+                {perks.map(({ icon, text }) => (
                   <div key={text} className="flex items-center gap-3">
-                    <span className="text-lg w-6 text-center">{emoji}</span>
+                    <span className="w-6 flex items-center justify-center" style={{ color: '#FF3B3B' }}>{icon}</span>
                     <span className="text-white/70 text-sm font-medium">{text}</span>
                   </div>
                 ))}
@@ -135,7 +135,9 @@ export default function PopupForm({ isVisible, onClose }) {
                   animate={{ opacity: 1, scale: 1 }}
                   className="flex-1 flex flex-col items-center justify-center text-center gap-4"
                 >
-                  <div className="text-5xl">🎉</div>
+                  <div className="w-14 h-14 rounded-full bg-red-50 flex items-center justify-center mx-auto">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF3B3B" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </div>
                   <h4 className="text-xl font-bold font-heading text-gray-900">Message Sent!</h4>
                   <p className="text-gray-500 text-sm">We'll get back to you within 24 hours.</p>
                   <div

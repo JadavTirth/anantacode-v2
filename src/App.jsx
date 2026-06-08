@@ -14,6 +14,7 @@ import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import PopupForm from './components/PopupForm';
 import CyberSecurity from './pages/CyberSecurity';
+import MobileApps from './pages/MobileApps';
 import Careers from './pages/Careers';
 
 /* ── Scroll progress indicator ── */
@@ -92,6 +93,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/services/cyber-security" element={<CyberSecurity />} />
+      <Route path="/services/mobile-apps" element={<MobileApps />} />
       <Route path="/careers" element={<Careers />} />
     </Routes>
   );

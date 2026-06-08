@@ -3,10 +3,12 @@ import { GitBranch, Mail, MapPin } from './Icons';
 
 const footerLinks = {
   Services: [
-    { label: 'Web Development', href: '#services' },
-    { label: 'Cloud & DevOps',  href: '#services' },
-    { label: 'UI/UX Design',    href: '#services' },
-    { label: 'API Development', href: '#services' },
+    { label: 'Cyber Security',          href: '/services/cyber-security' },
+    { label: 'Mobile Apps Development', href: '/services/mobile-apps' },
+    { label: 'Web Development',         href: '#services' },
+    { label: 'Cloud & DevOps',          href: '#services' },
+    { label: 'UI/UX Design',            href: '#services' },
+    { label: 'API Development',         href: '#services' },
   ],
   Company: [
     { label: 'Our Process', href: '#process' },

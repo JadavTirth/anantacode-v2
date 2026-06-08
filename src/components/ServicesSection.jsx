@@ -46,6 +46,7 @@ const services = [
     grad: 'from-violet-500/10 via-purple-500/5 to-transparent',
     glow: 'rgba(139,92,246,0.15)',
     iconBg: '#8b5cf6',
+    route: '/services/mobile-apps',
   },
 ];
 

@@ -204,13 +204,48 @@ export default function CyberSecurity() {
             </div>
             <div className="cs-diff-grid">
               {[
-                { icon: '⚡', title: 'AI-Powered Detection', desc: 'Our Brahmastra engine uses 8-feature AI classification to detect attacks that rule-based systems miss. Trained on real-world Indian traffic patterns.' },
-                { icon: '📜', title: 'Legal-Ready Evidence', desc: 'Every incident generates court-admissible evidence packages formatted for IT Act Sections 43A, 66 and 72A. One click to generate FIR documentation.' },
-                { icon: '🇮🇳', title: 'Data Stays in India', desc: 'All processing happens on Indian infrastructure. DPDP Act compliant from day one. Your data never crosses Indian borders.' },
-                { icon: '💬', title: 'Reports You Understand', desc: 'Security reports in Hindi, Gujarati, Marathi and English. No jargon walls. Your team actually understands what happened and what to do.' },
+                { 
+                  icon: (
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                    </svg>
+                  ), 
+                  title: 'AI-Powered Detection', 
+                  desc: 'Our Brahmastra engine uses 8-feature AI classification to detect attacks that rule-based systems miss. Trained on real-world Indian traffic patterns.' 
+                },
+                { 
+                  icon: (
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                      <polyline points="14 2 14 8 20 8"/>
+                    </svg>
+                  ), 
+                  title: 'Legal-Ready Evidence', 
+                  desc: 'Every incident generates court-admissible evidence packages formatted for IT Act Sections 43A, 66 and 72A. One click to generate FIR documentation.' 
+                },
+                { 
+                  icon: (
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                      <path d="M2 12h20"/>
+                    </svg>
+                  ), 
+                  title: 'Data Stays in India', 
+                  desc: 'All processing happens on Indian infrastructure. DPDP Act compliant from day one. Your data never crosses Indian borders.' 
+                },
+                { 
+                  icon: (
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    </svg>
+                  ), 
+                  title: 'Reports You Understand', 
+                  desc: 'Security reports in Hindi, Gujarati, Marathi and English. No jargon walls. Your team actually understands what happened and what to do.' 
+                },
               ].map((d) => (
                 <div className="cs-diff" key={d.title}>
-                  <div className="cs-diff-icon">{d.icon}</div>
+                  <div className="cs-diff-icon" style={{ color: '#e74c3c' }}>{d.icon}</div>
                   <h3>{d.title}</h3>
                   <p>{d.desc}</p>
                 </div>

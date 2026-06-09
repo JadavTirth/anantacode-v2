@@ -9,7 +9,7 @@ const info = [
 ];
 
 export default function ContactSection() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
   const [status, setStatus] = useState('idle'); // idle | sending | sent | error
 
   const handleSubmit = async (e) => {
@@ -19,6 +19,7 @@ export default function ContactSection() {
     const formData = new FormData();
     formData.append('access_key', '82e8b41c-8e90-4b3b-b1e8-499fa7b76729');
     formData.append('name', form.name);
+    formData.append('phone', form.phone);
     formData.append('email', form.email);
     formData.append('message', form.message);
 
@@ -30,7 +31,7 @@ export default function ContactSection() {
       const data = await response.json();
       if (data.success) {
         setStatus('sent');
-        setForm({ name: '', email: '', message: '' });
+        setForm({ name: '', email: '', phone: '', message: '' });
         setTimeout(() => setStatus('idle'), 3000);
       } else {
         setStatus('error');
@@ -79,11 +80,23 @@ export default function ContactSection() {
                 />
               </div>
               <div>
+                <label className="block text-sm font-medium text-gray-500 mb-1.5">Phone Number</label>
+                <input
+                  type="tel" required value={form.phone}
+                  onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                  placeholder="+91 8888229999"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50
+                             text-gray-900 text-sm placeholder-gray-400
+                             focus:outline-none focus:border-red-primary focus:ring-2 focus:ring-red-primary/20
+                             transition-all"
+                />
+              </div>
+              <div>
                 <label className="block text-sm font-medium text-gray-500 mb-1.5">Email Address</label>
                 <input
                   type="email" required value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  placeholder="john@company.com"
+                  placeholder="john@gmail.com"
                   className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50
                              text-gray-900 text-sm placeholder-gray-400
                              focus:outline-none focus:border-red-primary focus:ring-2 focus:ring-red-primary/20

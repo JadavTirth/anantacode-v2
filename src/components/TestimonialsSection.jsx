@@ -3,29 +3,32 @@ import { Star } from './Icons';
 
 const testimonials = [
   {
-    name: 'Sarah Jenkins',
-    role: 'VP Product, ScaleMetrics',
-    avatar: 'SJ',
-    avatarBg: '#f43f5e',
-    rating: 5,
-    quote: 'AnantaCode shipped our platform three weeks ahead of schedule. Their architecture decisions gave us an immediate competitive edge.',
-  },
-  {
-    name: 'David Chen',
-    role: 'Founder, AuraFlow',
-    avatar: 'DC',
-    avatarBg: '#6366f1',
-    rating: 5,
-    quote: 'Working with them feels like having an elite internal engineering team. Our checkout latency dropped 60% immediately post-launch.',
-  },
-  {
-    name: 'Maria Rodriguez',
-    role: 'CTO, NovaPay',
-    avatar: 'MR',
-    avatarBg: '#10b981',
-    rating: 5,
-    quote: 'Their obsession with quality makes them the highest ROI agency we\'ve ever worked with. They don\'t just build features — they build moats.',
-  },
+  name: 'Rohan Mehta',
+  role: 'Founder, Nexvora Labs',
+  avatar: 'RM',
+  avatarBg: '#f43f5e',
+  rating: 5,
+  quote:
+    'AnantaCode helped us rebuild our platform faster than expected. Their technical decisions improved both performance and scalability from day one.',
+},
+{
+  name: 'Emily Carter',
+  role: 'Product Lead, BrightScale',
+  avatar: 'EC',
+  avatarBg: '#6366f1',
+  rating: 5,
+  quote:
+    'Working with AnantaCode felt like having a dedicated in-house engineering team. Communication was smooth, delivery was fast, and the final product exceeded expectations.',
+},
+{
+  name: 'Arjun Patel',
+  role: 'CTO, FinEdge Solutions',
+  avatar: 'AP',
+  avatarBg: '#10b981',
+  rating: 5,
+  quote:
+    'Their attention to detail and focus on quality stood out immediately. Every feature was thoughtfully built with long-term growth and user experience in mind.',
+},
 ];
 
 function Stars({ count = 5 }) {
@@ -51,9 +54,6 @@ function Avatar({ initials, bg }) {
 }
 
 export default function TestimonialsSection() {
-  const featured = testimonials.find((t) => t.featured);
-  const secondary = testimonials.filter((t) => !t.featured);
-
   return (
     <section id="testimonials" style={{ background: '#09090b' }} className="min-h-screen flex flex-col justify-center py-10 relative overflow-hidden">
       {/* Background Glows (Left Blue, Right Red like image) */}

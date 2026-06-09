@@ -10,7 +10,7 @@ const perks = [
 ];
 
 export default function PopupForm({ isVisible, onClose }) {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
   const [status, setStatus] = useState('idle'); // idle | sending | sent | error
 
   const handleSubmit = async (e) => {
@@ -20,6 +20,7 @@ export default function PopupForm({ isVisible, onClose }) {
     const formData = new FormData();
     formData.append('access_key', '82e8b41c-8e90-4b3b-b1e8-499fa7b76729');
     formData.append('name', form.name);
+    formData.append('phone', form.phone);
     formData.append('email', form.email);
     formData.append('message', form.message);
 
@@ -31,7 +32,7 @@ export default function PopupForm({ isVisible, onClose }) {
       const data = await response.json();
       if (data.success) {
         setStatus('sent');
-        setForm({ name: '', email: '', message: '' });
+        setForm({ name: '', email: '', phone: '', message: '' });
         setTimeout(() => { setStatus('idle'); onClose(); }, 2500);
       } else {
         setStatus('error');
@@ -51,7 +52,7 @@ export default function PopupForm({ isVisible, onClose }) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.25 }}
-          className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
+          className="fixed inset-0 z-[9999] flex items-center justify-center p-4 overflow-y-auto"
           style={{ backdropFilter: 'blur(12px)', background: 'rgba(0,0,0,0.65)' }}
           onClick={(e) => e.target === e.currentTarget && onClose()}
         >
@@ -157,12 +158,26 @@ export default function PopupForm({ isVisible, onClose }) {
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4 flex-1">
                   <div>
                     <label className="block text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wide">
-                      Your Name
+                      Your Name <span className="text-red-400">*</span>
                     </label>
                     <input
-                      type="text" value={form.name}
+                      type="text" required value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
                       placeholder="John Doe"
+                      className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-sm
+                                 text-gray-900 placeholder-gray-300
+                                 focus:outline-none focus:border-red-400 focus:ring-2 focus:ring-red-400/20
+                                 transition-all duration-200"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wide">
+                      Phone Number <span className="text-red-400">*</span>
+                    </label>
+                    <input
+                      type="tel" required value={form.phone}
+                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                      placeholder="+91 8888229999"
                       className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-sm
                                  text-gray-900 placeholder-gray-300
                                  focus:outline-none focus:border-red-400 focus:ring-2 focus:ring-red-400/20
@@ -185,10 +200,10 @@ export default function PopupForm({ isVisible, onClose }) {
                   </div>
                   <div className="flex-1">
                     <label className="block text-xs font-semibold text-gray-500 mb-1.5 uppercase tracking-wide">
-                      Tell Us About Your Project
+                      Tell Us About Your Project <span className="text-red-400">*</span>
                     </label>
                     <textarea
-                      value={form.message} rows={3}
+                      required value={form.message} rows={3}
                       onChange={(e) => setForm({ ...form, message: e.target.value })}
                       placeholder="We need a web app that..."
                       className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-sm
@@ -210,8 +225,8 @@ export default function PopupForm({ isVisible, onClose }) {
                     }}
                   >
                     {status === 'sending' ? 'Sending...' :
-                     status === 'error' ? '✕ Error, try again' :
-                     <><Send size={15} /> Send Message</>}
+                      status === 'error' ? '✕ Error, try again' :
+                        <><Send size={15} /> Send Message</>}
                   </button>
                 </form>
               )}
